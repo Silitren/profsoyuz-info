@@ -3,82 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Единое информационное пространство | Электропрофсоюз</title>
+    <title>СИЛА В КАЖДОМ | Всероссийский Электропрофсоюз</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== ОСНОВНЫЕ ПЕРЕМЕННЫЕ И СТИЛИ ===== */
         :root {
-            --primary: #1a4b8c;
-            --primary-light: #2c6cb0;
-            --secondary: #ff7e30;
-            --secondary-light: #ff9d5c;
-            --accent: #00b894;
-            --dark: #2d3748;
-            --light: #f8fafc;
-            --gray: #718096;
+            --primary: #003366;
+            --accent1: #00EEFF;
+            --accent2: #FF6600;
+            --background: #FAFAFA;
+            --dark: #1a1a1a;
+            --light: #ffffff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--light);
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--background);
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
         }
 
-        /* Navigation */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* ===== НАВИГАЦИЯ ===== */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--primary);
         }
 
-        .logo i {
-            font-size: 1.5rem;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--primary) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .logo-text {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 30px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
+            color: var(--accent2);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background: transparent;
             color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--accent2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55c00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+        }
+
+        .btn-accent {
+            background: var(--accent1);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-accent:hover {
+            background: #00d5e5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 238, 255, 0.3);
         }
 
         .menu-toggle {
@@ -90,15 +192,11 @@
             color: var(--primary);
         }
 
-        /* Hero Section */
+        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #002244 100%);
             color: white;
+            padding: 160px 0 100px;
             position: relative;
             overflow: hidden;
         }
@@ -106,257 +204,281 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%2300EEFF" opacity="0.05" d="M800,500c0,138.1-111.9,250-250,250S300,638.1,300,500S411.9,250,550,250S800,361.9,800,500z"/><path fill="%23FF6600" opacity="0.05" d="M200,300c0,55.2-44.8,100-100,100S0,355.2,0,300s44.8-100,100-100S200,244.8,200,300z"/><path fill="%2300EEFF" opacity="0.05" d="M900,700c0,55.2-44.8,100-100,100s-100-44.8-100-100s44.8-100,100-100S900,644.8,900,700z"/></svg>');
+            background-size: cover;
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 0 2rem;
-            z-index: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 238, 255, 0.2);
+            color: var(--accent1);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 238, 255, 0.3);
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 1s ease forwards;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .slogan {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--accent1);
+            font-weight: 600;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.3s forwards;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
         }
 
-        .hero-buttons {
+        .hero-actions {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.6s forwards;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
+        /* ===== ФИЛОСОФИЯ ===== */
+        .philosophy {
+            background: var(--light);
+            position: relative;
         }
 
-        .btn-primary {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 2rem;
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
             font-size: 2.5rem;
+            margin-bottom: 15px;
             color: var(--primary);
-            margin-bottom: 1rem;
         }
 
-        .section-title p {
+        .section-subtitle {
             font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 600px;
+            color: #666;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        /* Features Section */
-        .features {
-            background: white;
-        }
-
-        .features-grid {
+        .philosophy-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 30px;
         }
 
-        .feature-card {
-            background: var(--light);
-            border-radius: 10px;
-            padding: 2.5rem 2rem;
-            text-align: center;
+        .philosophy-card {
+            background: var(--background);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            opacity: 0;
-            transform: translateY(30px);
+            border-left: 4px solid var(--accent1);
         }
 
-        .feature-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .feature-card:hover {
+        .philosophy-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             color: var(--primary);
         }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
+        .philosophy-card p {
+            color: #555;
         }
 
-        .feature-card p {
-            color: var(--gray);
+        /* ===== ЭКОСИСТЕМА ===== */
+        .ecosystem {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
         }
 
-        /* Channels Section */
-        .channels {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+        .ecosystem-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-btn.active {
+            background: var(--accent2);
             color: white;
         }
 
-        .channels .section-title h2,
-        .channels .section-title p {
-            color: white;
+        .tab-content {
+            display: none;
         }
 
-        .channels-grid {
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .ecosystem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 30px;
         }
 
-        .channel-card {
+        .ecosystem-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .ecosystem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .ecosystem-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .ecosystem-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .ecosystem-card p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* ===== KPI ===== */
+        .kpi {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .kpi .section-title {
+            color: white;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .kpi-item {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
+            border-radius: 15px;
+            padding: 30px 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            transform: translateY(30px);
         }
 
-        .channel-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .channel-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .channel-icon {
+        .kpi-value {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--accent1);
+            font-family: 'Exo 2', sans-serif;
         }
 
-        .channel-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .channel-card p {
-            margin-bottom: 1.5rem;
+        .kpi-label {
+            font-size: 1rem;
             opacity: 0.9;
         }
 
-        .channel-card .btn {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .channel-card .btn:hover {
-            background: var(--secondary-light);
-        }
-
-        /* CTA Section */
+        /* ===== CTA ===== */
         .cta {
+            background: linear-gradient(135deg, var(--accent2) 0%, #e55c00 100%);
+            color: white;
             text-align: center;
-            background: var(--light);
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 100px 0;
         }
 
         .cta h2 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+            margin-bottom: 20px;
         }
 
         .cta p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
         }
 
-        /* Footer */
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== ФУТЕР ===== */
         footer {
             background: var(--dark);
             color: white;
-            padding: 4rem 2rem 2rem;
+            padding: 60px 0 30px;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto 3rem;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-column h3 {
             font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
+            margin-bottom: 20px;
+            color: var(--accent1);
         }
 
         .footer-links {
@@ -364,23 +486,23 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 10px;
         }
 
         .footer-links a {
-            color: #cbd5e0;
+            color: #ccc;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--accent1);
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
@@ -396,45 +518,39 @@
         }
 
         .social-links a:hover {
-            background: var(--secondary);
+            background: var(--accent1);
             transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #a0aec0;
+            color: #999;
+            font-size: 0.9rem;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* ===== АНИМАЦИИ ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-links, .nav-actions {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 1rem 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
             }
 
             .menu-toggle {
@@ -445,196 +561,299 @@
                 font-size: 2.5rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .hero .slogan {
+                font-size: 1.4rem;
             }
 
-            .hero-buttons {
+            .hero-actions {
                 flex-direction: column;
-                align-items: center;
             }
 
-            section {
-                padding: 4rem 1rem;
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .kpi-value {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Навигация -->
     <nav>
-        <div class="logo">
-            <i class="fas fa-bolt"></i>
-            <span>Электропрофсоюз</span>
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">Э</div>
+                <div class="logo-text">СИЛА В КАЖДОМ</div>
+            </div>
+            <div class="nav-links">
+                <a href="#philosophy">Философия</a>
+                <a href="#ecosystem">Экосистема</a>
+                <a href="#kpi">Результаты</a>
+                <a href="#join">Присоединиться</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">Войти</a>
+                <a href="#" class="btn btn-primary">Присоединиться</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        <div class="nav-links">
-            <a href="#features">Возможности</a>
-            <a href="#channels">Каналы</a>
-            <a href="#about">О нас</a>
-            <a href="#contact">Контакты</a>
-        </div>
-        <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Главный экран -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Единое информационное пространство</h1>
-            <p>Современная коммуникационная платформа для членов профсоюза. Все новости, уведомления и возможности в одном месте.</p>
-            <div class="hero-buttons">
-                <a href="#channels" class="btn btn-primary">Подключиться</a>
-                <a href="#about" class="btn btn-secondary">Узнать больше</a>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Всероссийский Электропрофсоюз</div>
+                <h1>СИЛА В КАЖДОМ</h1>
+                <div class="slogan">Твоя энергия. Твои права. Твое сообщество.</div>
+                <p>Профсоюз нового поколения — цифровая, мобильная, интерактивная платформа, которая говорит с молодежью на ее языке и решает ее специфические проблемы.</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-accent">Скачать приложение</a>
+                    <a href="#" class="btn btn-outline" style="color: white; border-color: white;">Узнать больше</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="section-title">
-            <h2>Наши возможности</h2>
-            <p>Современные инструменты для эффективной коммуникации и защиты ваших прав</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3>Мгновенные уведомления</h3>
-                <p>Получайте важные новости и оповещения в реальном времени через удобные каналы связи.</p>
+    <!-- Философия -->
+    <section id="philosophy" class="philosophy">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Профсоюз нового поколения</h2>
+                <p class="section-subtitle">Мы создаем среду, где молодые специалисты энергетической отрасли находят защиту, поддержку и возможности для роста</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
+            <div class="philosophy-grid">
+                <div class="philosophy-card fade-in">
+                    <h3>Карьерный старт</h3>
+                    <p>Помогаем с адаптацией, трудоустройством и защищаем от неоплачиваемых стажировок.</p>
                 </div>
-                <h3>Защита прав</h3>
-                <p>Быстрая юридическая поддержка и консультации по вопросам трудового законодательства.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-users"></i>
+                <div class="philosophy-card fade-in">
+                    <h3>Против выгорания</h3>
+                    <p>Разрабатываем программы поддержки ментального здоровья на энергообъектах.</p>
                 </div>
-                <h3>Сообщество</h3>
-                <p>Присоединяйтесь к активному сообществу профессионалов вашей отрасли.</p>
+                <div class="philosophy-card fade-in">
+                    <h3>Digital-участие</h3>
+                    <p>Используем современные инструменты для вовлечения в управление профсоюзом.</p>
+                </div>
+                <div class="philosophy-card fade-in">
+                    <h3>Нетворкинг</h3>
+                    <p>Создаем профессиональные сообщества для обмена опытом и карьерного роста.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Channels Section -->
-    <section id="channels" class="channels">
-        <div class="section-title">
-            <h2>Наши каналы связи</h2>
-            <p>Выбирайте удобный для вас способ получения информации</p>
-        </div>
-        <div class="channels-grid">
-            <div class="channel-card">
-                <div class="channel-icon">
-                    <i class="fab fa-telegram"></i>
-                </div>
-                <h3>Telegram</h3>
-                <p>Основной канал для срочных новостей и важных объявлений. Быстро, удобно, безопасно.</p>
-                <a href="#" class="btn">Подписаться</a>
+    <!-- Экосистема -->
+    <section id="ecosystem" class="ecosystem">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Цифровая экосистема</h2>
+                <p class="section-subtitle">Единый бренд, единый вход для всех сервисов Всероссийского Электропрофсоюза</p>
             </div>
-            <div class="channel-card">
-                <div class="channel-icon">
-                    <i class="fab fa-vk"></i>
-                </div>
-                <h3>ВКонтакте</h3>
-                <p>Сообщество для общения, обсуждения и получения развернутой информации.</p>
-                <a href="#" class="btn">Присоединиться</a>
+            
+            <div class="ecosystem-tabs">
+                <button class="tab-btn active" data-tab="app">Мобильное приложение</button>
+                <button class="tab-btn" data-tab="website">Сайт-визитка</button>
+                <button class="tab-btn" data-tab="office">Личный кабинет</button>
+                <button class="tab-btn" data-tab="bot">Telegram-бот</button>
             </div>
-            <div class="channel-card">
-                <div class="channel-icon">
-                    <i class="fas fa-newspaper"></i>
+            
+            <div id="app" class="tab-content active">
+                <div class="ecosystem-grid">
+                    <div class="ecosystem-card fade-in">
+                        <div class="ecosystem-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Мгновенные уведомления</h3>
+                        <p>Push-уведомления о важных голосованиях, событиях и экстренных ситуациях</p>
+                        <a href="#" class="btn btn-outline">Узнать больше</a>
+                    </div>
+                    <div class="ecosystem-card fade-in">
+                        <div class="ecosystem-icon">
+                            <i class="fas fa-sos"></i>
+                        </div>
+                        <h3>Кнопка SOS</h3>
+                        <p>Экстренная связь с правовым отделом при задержке зарплаты или несчастном случае</p>
+                        <a href="#" class="btn btn-outline">Узнать больше</a>
+                    </div>
+                    <div class="ecosystem-card fade-in">
+                        <div class="ecosystem-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Геймификация</h3>
+                        <p>Зарабатывайте баллы за активность и обменивайте на мерч и скидки</p>
+                        <a href="#" class="btn btn-outline">Узнать больше</a>
+                    </div>
                 </div>
-                <h3>Новостная рассылка</h3>
-                <p>Еженедельный дайджест самых важных событий и изменений в вашей почте.</p>
-                <a href="#" class="btn">Подписаться</a>
+            </div>
+            
+            <div id="website" class="tab-content">
+                <div class="ecosystem-grid">
+                    <div class="ecosystem-card fade-in">
+                        <div class="ecosystem-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>Живая лента событий</h3>
+                        <p>Актуальные новости и кейсы успешной защиты прав молодых специалистов</p>
+                        <a href="#" class="btn btn-outline">Узнать больше</a>
+                    </div>
+                    <div class="ecosystem-card fade-in">
+                        <div class="ecosystem-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>Вступление за 3 клика</h3>
+                        <p>Процедура вступления в профсоюз максимально упрощена и доступна онлайн</p>
+                        <a href="#" class="btn btn-outline">Узнать больше</a>
+                    </div>
+                    <div class="ecosystem-card fade-in">
+                        <div class="ecosystem-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Правовой навигатор</h3>
+                        <p>Интерактивные инструкции "Что делать, если..." для различных ситуаций</p>
+                        <a href="#" class="btn btn-outline">Узнать больше</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="cta-content">
-            <h2>Присоединяйтесь к нашему сообществу</h2>
-            <p>Станьте частью сильного профессионального сообщества, которое защищает ваши права и интересы.</p>
-            <a href="#" class="btn btn-primary">Стать членом профсоюза</a>
+    <!-- KPI -->
+    <section id="kpi" class="kpi">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наши результаты</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Целевые показатели развития молодежного направления</p>
+            </div>
+            <div class="kpi-grid">
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="25">0</div>
+                    <div class="kpi-label">Рост молодежного членства (%)</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="20000">0</div>
+                    <div class="kpi-label">Скачиваний приложения</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="60">0</div>
+                    <div class="kpi-label">Молодежи на мероприятиях (%)</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="1000">0</div>
+                    <div class="kpi-label">Рефералов по программе</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Электропрофсоюз</h3>
-                <p>Сильное сообщество профессионалов электротехнической отрасли, защищающее права и интересы работников.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Навигация</h3>
-                <ul class="footer-links">
-                    <li><a href="#features">Возможности</a></li>
-                    <li><a href="#channels">Каналы связи</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Контакты</h3>
-                <ul class="footer-links">
-                    <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Профсоюзная, 15</li>
-                    <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
-                    <li><i class="fas fa-envelope"></i> info@electroprof.ru</li>
-                </ul>
+    <!-- CTA -->
+    <section id="join" class="cta">
+        <div class="container">
+            <h2>Присоединяйтесь к сообществу</h2>
+            <p>Станьте частью профсоюза нового поколения, где ваша энергия превращается в реальные возможности и защищённость</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-accent">Подать заявку онлайн</a>
+                <a href="#" class="btn" style="background: white; color: var(--accent2);">Скачать приложение</a>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2023 Электропрофсоюз. Все права защищены.</p>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Всероссийский Электропрофсоюз</h3>
+                    <p>Профсоюз нового поколения для молодых специалистов энергетической отрасли. Сила в каждом из нас!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#philosophy">Философия</a></li>
+                        <li><a href="#ecosystem">Экосистема</a></li>
+                        <li><a href="#kpi">Результаты</a></li>
+                        <li><a href="#join">Присоединиться</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@electroprof.ru</li>
+                        <li><i class="fas fa-phone"></i> 8-800-XXX-XX-XX</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Профсоюзная, 15</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Всероссийский Электропрофсоюз. Концепция "СИЛА В КАЖДОМ". Все права защищены.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+        // Табы экосистемы
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок и контента
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Добавляем активный класс к нажатой кнопке
+                button.classList.add('active');
+                
+                // Показываем соответствующий контент
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
         });
 
-        // Scroll animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+        // Анимация появления при скролле
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Анимация счетчиков для KPI
+                    if (entry.target.querySelector('.kpi-value')) {
+                        const valueElement = entry.target.querySelector('.kpi-value');
+                        const target = parseInt(valueElement.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            valueElement.textContent = Math.floor(current).toLocaleString();
+                        }, 16);
                     }
-                });
-            }, observerOptions);
-
-            // Observe feature cards and channel cards
-            document.querySelectorAll('.feature-card, .channel-card').forEach(card => {
-                observer.observe(card);
-            });
-
-            // Navbar background on scroll
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    document.querySelector('nav').style.background = 'rgba(255, 255, 255, 0.98)';
-                    document.querySelector('nav').style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-                } else {
-                    document.querySelector('nav').style.background = 'rgba(255, 255, 255, 0.95)';
-                    document.querySelector('nav').style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
                 }
             });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Мобильное меню
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').style.display = 
+                document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
