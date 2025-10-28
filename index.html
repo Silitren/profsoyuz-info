@@ -13,7 +13,9 @@
         :root {
             --primary: #003366;
             --accent1: #00EEFF;
-            --accent2: #FF6600;
+            --accent2: #FFD700; /* Золотой вместо оранжевого */
+            --gold-light: #FFED4E;
+            --gold-dark: #B8860B;
             --background: #FAFAFA;
             --dark: #1a1a1a;
             --light: #ffffff;
@@ -74,17 +76,20 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent1) 0%, var(--primary) 100%);
-            border-radius: 8px;
+            width: 50px; /* Увеличили размер */
+            height: 50px; /* Увеличили размер */
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            font-family: 'Exo 2', sans-serif;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, var(--accent2) 0%, var(--gold-dark) 100%); /* Золотой градиент */
+        }
+
+        .logo-icon svg {
+            width: 32px; /* Увеличили букву */
+            height: 32px;
         }
 
         .logo-text {
@@ -111,7 +116,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--accent2);
+            color: var(--accent2); /* Золотой при наведении */
         }
 
         .nav-links a::after {
@@ -121,7 +126,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent1);
+            background: var(--accent2); /* Золотая линия */
             transition: width 0.3s ease;
         }
 
@@ -161,14 +166,15 @@
         }
 
         .btn-primary {
-            background: var(--accent2);
-            color: white;
+            background: var(--accent2); /* Золотая кнопка */
+            color: var(--primary);
+            font-weight: 700;
         }
 
         .btn-primary:hover {
-            background: #e55c00;
+            background: var(--gold-light);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
 
         .btn-accent {
@@ -208,7 +214,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%2300EEFF" opacity="0.05" d="M800,500c0,138.1-111.9,250-250,250S300,638.1,300,500S411.9,250,550,250S800,361.9,800,500z"/><path fill="%23FF6600" opacity="0.05" d="M200,300c0,55.2-44.8,100-100,100S0,355.2,0,300s44.8-100,100-100S200,244.8,200,300z"/><path fill="%2300EEFF" opacity="0.05" d="M900,700c0,55.2-44.8,100-100,100s-100-44.8-100-100s44.8-100,100-100S900,644.8,900,700z"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%2300EEFF" opacity="0.05" d="M800,500c0,138.1-111.9,250-250,250S300,638.1,300,500S411.9,250,550,250S800,361.9,800,500z"/><path fill="%23FFD700" opacity="0.05" d="M200,300c0,55.2-44.8,100-100,100S0,355.2,0,300s44.8-100,100-100S200,244.8,200,300z"/><path fill="%2300EEFF" opacity="0.05" d="M900,700c0,55.2-44.8,100-100,100s-100-44.8-100-100s44.8-100,100-100S900,644.8,900,700z"/></svg>');
             background-size: cover;
         }
 
@@ -220,14 +226,14 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(0, 238, 255, 0.2);
-            color: var(--accent1);
+            background: rgba(255, 215, 0, 0.2); /* Золотой фон */
+            color: var(--accent2); /* Золотой текст */
             padding: 5px 15px;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 20px;
-            border: 1px solid rgba(0, 238, 255, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .hero h1 {
@@ -256,10 +262,35 @@
             flex-wrap: wrap;
         }
 
-        /* ===== ФИЛОСОФИЯ ===== */
-        .philosophy {
+        /* Символы Всероссийского Электропрофсоюза */
+        .hero-symbols {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            opacity: 0.7;
+        }
+
+        .symbol {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent2); /* Золотой цвет */
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        /* ===== ЦЕЛИ СОЗДАНИЯ ===== */
+        .goals {
             background: var(--light);
-            position: relative;
         }
 
         .section-header {
@@ -280,6 +311,54 @@
             margin: 0 auto;
         }
 
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .goal-card {
+            background: var(--background);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent2); /* Золотая акцентная линия */
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .goal-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--accent2);
+            color: var(--primary);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .goal-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .goal-card p {
+            color: #555;
+        }
+
+        /* ===== ФИЛОСОФИЯ ===== */
+        .philosophy {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
         .philosophy-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -287,12 +366,12 @@
         }
 
         .philosophy-card {
-            background: var(--background);
+            background: white;
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            border-left: 4px solid var(--accent1);
+            border-top: 4px solid var(--accent2); /* Золотая акцентная линия */
         }
 
         .philosophy-card:hover {
@@ -310,90 +389,7 @@
             color: #555;
         }
 
-        /* ===== ЭКОСИСТЕМА ===== */
-        .ecosystem {
-            background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
-        }
-
-        .ecosystem-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tab-btn {
-            background: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-family: 'Exo 2', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .tab-btn.active {
-            background: var(--accent2);
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .ecosystem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .ecosystem-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .ecosystem-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .ecosystem-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent1) 0%, var(--primary) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 1.8rem;
-        }
-
-        .ecosystem-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .ecosystem-card p {
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        /* ===== KPI ===== */
+        /* ===== ЦЕЛЕВЫЕ ПОКАЗАТЕЛИ ===== */
         .kpi {
             background: var(--primary);
             color: white;
@@ -406,7 +402,7 @@
 
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -417,13 +413,19 @@
             border-radius: 15px;
             padding: 30px 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .kpi-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .kpi-value {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 10px;
-            color: var(--accent1);
+            color: var(--accent2); /* Золотой цвет */
             font-family: 'Exo 2', sans-serif;
         }
 
@@ -432,10 +434,252 @@
             opacity: 0.9;
         }
 
+        .mchp-abbr {
+            font-size: 0.8rem;
+            color: var(--accent1);
+            margin-top: 5px;
+        }
+
+        /* ===== ЕДИНОЕ ИНФОРМАЦИОННОЕ ПРОСТРАНСТВО ===== */
+        .unified-space {
+            background: white;
+        }
+
+        .space-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .space-feature {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .space-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .space-feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* ===== ДОРОЖНАЯ КАРТА ===== */
+        .roadmap {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto 0;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent2);
+            transform: translateX(-50%);
+        }
+
+        .roadmap-phase {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .roadmap-phase:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .phase-content {
+            width: 45%;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--accent2);
+        }
+
+        .phase-marker {
+            width: 30px;
+            height: 30px;
+            background: var(--accent2);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px var(--accent2);
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .phase-items {
+            list-style: none;
+        }
+
+        .phase-items li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .phase-items li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent2);
+            font-weight: bold;
+        }
+
+        /* ===== TELEGRAM БОТ ===== */
+        .telegram-bot {
+            background: white;
+        }
+
+        .bot-screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .screenshot {
+            background: var(--background);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #0088cc 0%, #005580 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent2) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-info h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .subscription-options {
+            margin: 20px 0;
+        }
+
+        .subscription-options h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .checkbox-group {
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+
         /* ===== CTA ===== */
         .cta {
-            background: linear-gradient(135deg, var(--accent2) 0%, #e55c00 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--accent2) 0%, var(--gold-dark) 100%);
+            color: var(--primary);
             text-align: center;
             padding: 100px 0;
         }
@@ -478,7 +722,7 @@
         .footer-column h3 {
             font-size: 1.3rem;
             margin-bottom: 20px;
-            color: var(--accent1);
+            color: var(--accent2); /* Золотой цвет */
         }
 
         .footer-links {
@@ -496,7 +740,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--accent1);
+            color: var(--accent2); /* Золотой при наведении */
         }
 
         .social-links {
@@ -518,7 +762,7 @@
         }
 
         .social-links a:hover {
-            background: var(--accent1);
+            background: var(--accent2);
             transform: translateY(-3px);
         }
 
@@ -574,7 +818,40 @@
             }
 
             .kpi-value {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .hero-symbols {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 40px;
+            }
+
+            .symbol {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .roadmap-timeline::before {
+                left: 30px;
+            }
+
+            .roadmap-phase {
+                flex-direction: row !important;
+            }
+
+            .phase-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+            }
+
+            .phase-marker {
+                left: 30px;
             }
         }
     </style>
@@ -584,18 +861,24 @@
     <nav>
         <div class="container nav-container">
             <div class="logo">
-                <div class="logo-icon">Э</div>
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Белая буква Э на золотом фоне -->
+                        <path d="M6 6H26V10H14V14H22V18H14V22H26V26H6V6Z" fill="white"/>
+                    </svg>
+                </div>
                 <div class="logo-text">СИЛА В КАЖДОМ</div>
             </div>
             <div class="nav-links">
+                <a href="#goals">Цели</a>
                 <a href="#philosophy">Философия</a>
-                <a href="#ecosystem">Экосистема</a>
-                <a href="#kpi">Результаты</a>
-                <a href="#join">Присоединиться</a>
+                <a href="#kpi">Показатели</a>
+                <a href="#unified-space">Пространство</a>
+                <a href="#roadmap">Дорожная карта</a>
             </div>
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">Войти</a>
-                <a href="#" class="btn btn-primary">Присоединиться</a>
+                <a href="#" class="btn btn-primary" id="join-btn">Присоединиться</a>
             </div>
             <button class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -614,6 +897,82 @@
                 <div class="hero-actions">
                     <a href="#" class="btn btn-accent">Скачать приложение</a>
                     <a href="#" class="btn btn-outline" style="color: white; border-color: white;">Узнать больше</a>
+                </div>
+            </div>
+            
+            <!-- Символы Всероссийского Электропрофсоюза -->
+            <!-- ЗАМЕНИТЕ ЭТИ СИМВОЛЫ НА ФАКТИЧЕСКИЕ СИМВОЛЫ ВАШЕГО ПРОФСОЮЗА -->
+            <div class="hero-symbols">
+                <div class="symbol">
+                    <i class="fas fa-bolt"></i> <!-- Молния - символ энергии -->
+                </div>
+                <div class="symbol">
+                    <i class="fas fa-hands-helping"></i> <!-- Рукопожатие - символ солидарности -->
+                </div>
+                <div class="symbol">
+                    <i class="fas fa-shield-alt"></i> <!-- Щит - символ защиты -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цели создания -->
+    <section id="goals" class="goals">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Цели создания единого информационно-медийного пространства</h2>
+                <p class="section-subtitle">10 ключевых преимуществ для молодых специалистов</p>
+            </div>
+            <div class="goals-grid">
+                <div class="goal-card fade-in">
+                    <div class="goal-number">1</div>
+                    <h3>Мгновенное информирование</h3>
+                    <p>Оперативное получение информации о мероприятиях, изменениях в законодательстве и возможностях для развития</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">2</div>
+                    <h3>Персонализированный контент</h3>
+                    <p>Каждый молодой специалист получает информацию, релевантную его профессиональным интересам и местоположению</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">3</div>
+                    <h3>Цифровая адаптация</h3>
+                    <p>Помощь в адаптации на рабочем месте через цифровые сервисы и онлайн-наставничество</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">4</div>
+                    <h3>Правовая поддержка 24/7</h3>
+                    <p>Круглосуточный доступ к юридическим консультациям и быстрая реакция на проблемные ситуации</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">5</div>
+                    <h3>Карьерный трекинг</h3>
+                    <p>Отслеживание профессионального роста и получение рекомендаций по развитию карьеры</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">6</div>
+                    <h3>Социальное взаимодействие</h3>
+                    <p>Возможность общения с коллегами, обмена опытом и создания профессиональных связей</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">7</div>
+                    <h3>Образовательные ресурсы</h3>
+                    <p>Доступ к онлайн-курсам, вебинарам и обучающим материалам для профессионального развития</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">8</div>
+                    <h3>Участие в управлении</h3>
+                    <p>Возможность влиять на решения профсоюза через цифровые голосования и опросы</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">9</div>
+                    <h3>Мотивационные программы</h3>
+                    <p>Геймификация и система поощрений за активное участие в жизни профсоюза</p>
+                </div>
+                <div class="goal-card fade-in">
+                    <div class="goal-number">10</div>
+                    <h3>Единая точка доступа</h3>
+                    <p>Все сервисы и информация доступны через единую платформу без необходимости переключения между разными источниками</p>
                 </div>
             </div>
         </div>
@@ -643,121 +1002,209 @@
                     <h3>Нетворкинг</h3>
                     <p>Создаем профессиональные сообщества для обмена опытом и карьерного роста.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Экосистема -->
-    <section id="ecosystem" class="ecosystem">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Цифровая экосистема</h2>
-                <p class="section-subtitle">Единый бренд, единый вход для всех сервисов Всероссийского Электропрофсоюза</p>
-            </div>
-            
-            <div class="ecosystem-tabs">
-                <button class="tab-btn active" data-tab="app">Мобильное приложение</button>
-                <button class="tab-btn" data-tab="website">Сайт-визитка</button>
-                <button class="tab-btn" data-tab="office">Личный кабинет</button>
-                <button class="tab-btn" data-tab="bot">Telegram-бот</button>
-            </div>
-            
-            <div id="app" class="tab-content active">
-                <div class="ecosystem-grid">
-                    <div class="ecosystem-card fade-in">
-                        <div class="ecosystem-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Мгновенные уведомления</h3>
-                        <p>Push-уведомления о важных голосованиях, событиях и экстренных ситуациях</p>
-                        <a href="#" class="btn btn-outline">Узнать больше</a>
-                    </div>
-                    <div class="ecosystem-card fade-in">
-                        <div class="ecosystem-icon">
-                            <i class="fas fa-sos"></i>
-                        </div>
-                        <h3>Кнопка SOS</h3>
-                        <p>Экстренная связь с правовым отделом при задержке зарплаты или несчастном случае</p>
-                        <a href="#" class="btn btn-outline">Узнать больше</a>
-                    </div>
-                    <div class="ecosystem-card fade-in">
-                        <div class="ecosystem-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3>Геймификация</h3>
-                        <p>Зарабатывайте баллы за активность и обменивайте на мерч и скидки</p>
-                        <a href="#" class="btn btn-outline">Узнать больше</a>
-                    </div>
+                <div class="philosophy-card fade-in">
+                    <h3>Правовая грамотность</h3>
+                    <p>Обучаем молодых специалистов защите своих трудовых прав в цифровую эпоху.</p>
                 </div>
-            </div>
-            
-            <div id="website" class="tab-content">
-                <div class="ecosystem-grid">
-                    <div class="ecosystem-card fade-in">
-                        <div class="ecosystem-icon">
-                            <i class="fas fa-newspaper"></i>
-                        </div>
-                        <h3>Живая лента событий</h3>
-                        <p>Актуальные новости и кейсы успешной защиты прав молодых специалистов</p>
-                        <a href="#" class="btn btn-outline">Узнать больше</a>
-                    </div>
-                    <div class="ecosystem-card fade-in">
-                        <div class="ecosystem-icon">
-                            <i class="fas fa-user-plus"></i>
-                        </div>
-                        <h3>Вступление за 3 клика</h3>
-                        <p>Процедура вступления в профсоюз максимально упрощена и доступна онлайн</p>
-                        <a href="#" class="btn btn-outline">Узнать больше</a>
-                    </div>
-                    <div class="ecosystem-card fade-in">
-                        <div class="ecosystem-icon">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <h3>Правовой навигатор</h3>
-                        <p>Интерактивные инструкции "Что делать, если..." для различных ситуаций</p>
-                        <a href="#" class="btn btn-outline">Узнать больше</a>
-                    </div>
+                <div class="philosophy-card fade-in">
+                    <h3>Мобильность</h3>
+                    <p>Обеспечиваем доступ ко всем сервисам профсоюза через мобильное приложение.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- KPI -->
+    <!-- Целевые показатели -->
     <section id="kpi" class="kpi">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Наши результаты</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Целевые показатели развития молодежного направления</p>
+                <h2 class="section-title">Целевые показатели</h2>
+                <p class="section-subtitle">Планируемые результаты развития молодежного направления<sup>*</sup></p>
+                <p style="font-size: 0.9rem; margin-top: 10px;"><sup>*</sup>МЧП - молодые члены профсоюза (возраст до 35 лет)</p>
             </div>
             <div class="kpi-grid">
                 <div class="kpi-item fade-in">
                     <div class="kpi-value" data-target="25">0</div>
-                    <div class="kpi-label">Рост молодежного членства (%)</div>
+                    <div class="kpi-label">Увеличение количества МЧП</div>
+                    <div class="mchp-abbr">+25% за год</div>
                 </div>
                 <div class="kpi-item fade-in">
-                    <div class="kpi-value" data-target="20000">0</div>
-                    <div class="kpi-label">Скачиваний приложения</div>
+                    <div class="kpi-value" data-target="85">0</div>
+                    <div class="kpi-label">Информационный охват МЧП</div>
+                    <div class="mchp-abbr">85% от общего числа</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="15000">0</div>
+                    <div class="kpi-label">Активных пользователей приложения</div>
+                    <div class="mchp-abbr">среди МЧП</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="70">0</div>
+                    <div class="kpi-label">Участие МЧП в мероприятиях</div>
+                    <div class="mchp-abbr">70% от общего числа участников</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="45">0</div>
+                    <div class="kpi-label">Рост онлайн-активности МЧП</div>
+                    <div class="mchp-abbr">+45% за полгода</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="5000">0</div>
+                    <div class="kpi-label">Регистраций в реферальной программе</div>
+                    <div class="mchp-abbr">среди МЧП</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="90">0</div>
+                    <div class="kpi-label">Удовлетворенность МЧП сервисами</div>
+                    <div class="mchp-abbr">NPS +90</div>
                 </div>
                 <div class="kpi-item fade-in">
                     <div class="kpi-value" data-target="60">0</div>
-                    <div class="kpi-label">Молодежи на мероприятиях (%)</div>
+                    <div class="kpi-label">МЧП в менторских программах</div>
+                    <div class="mchp-abbr">60% от общего числа наставников</div>
                 </div>
                 <div class="kpi-item fade-in">
-                    <div class="kpi-value" data-target="1000">0</div>
-                    <div class="kpi-label">Рефералов по программе</div>
+                    <div class="kpi-value" data-target="40">0</div>
+                    <div class="kpi-label">Рост правовых обращений от МЧП</div>
+                    <div class="mchp-abbr">+40% за год</div>
+                </div>
+                <div class="kpi-item fade-in">
+                    <div class="kpi-value" data-target="95">0</div>
+                    <div class="kpi-label">Успешных решений для МЧП</div>
+                    <div class="mchp-abbr">95% положительных исходов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Единое информационное пространство -->
+    <section id="unified-space" class="unified-space">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Единое информационно-медийное пространство</h2>
+                <p class="section-subtitle">Цифровая экосистема для молодых специалистов энергетической отрасли</p>
+            </div>
+            <div class="space-features">
+                <div class="space-feature fade-in">
+                    <div class="space-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Мобильное приложение</h3>
+                    <p>Все сервисы профсоюза в вашем смартфоне: уведомления, голосования, правовая помощь и многое другое</p>
+                </div>
+                <div class="space-feature fade-in">
+                    <div class="space-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Личный кабинет</h3>
+                    <p>Персонализированная платформа с доступом ко всем возможностям профсоюза и отслеживанием вашего развития</p>
+                </div>
+                <div class="space-feature fade-in">
+                    <div class="space-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram-бот</h3>
+                    <p>Быстрый доступ к информации, консультациям и уведомлениям через популярный мессенджер</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Дорожная карта -->
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Дорожная карта интеграции</h2>
+                <p class="section-subtitle">Поэтапное внедрение единой информационной системы</p>
+            </div>
+            <div class="roadmap-timeline">
+                <div class="roadmap-phase">
+                    <div class="phase-content fade-in">
+                        <h3 class="phase-title">Этап 1: Фундамент (1-3 месяца)</h3>
+                        <ul class="phase-items">
+                            <li>Создание молодежного совета для тестирования идей</li>
+                            <li>Разработка концепции и технического задания</li>
+                            <li>Запуск базового сайта с информацией о профсоюзе</li>
+                            <li>Создание Telegram-бота для быстрого старта</li>
+                            <li>Формирование контент-стратегии для социальных сетей</li>
+                        </ul>
+                    </div>
+                    <div class="phase-marker"></div>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-content fade-in">
+                        <h3 class="phase-title">Этап 2: Развитие (4-9 месяцев)</h3>
+                        <ul class="phase-items">
+                            <li>Разработка и запуск мобильного приложения</li>
+                            <li>Создание системы личных кабинетов для членов профсоюза</li>
+                            <li>Интеграция сервисов онлайн-голосования и опросов</li>
+                            <li>Запуск программы менторства для молодых специалистов</li>
+                            <li>Внедрение системы уведомлений и напоминаний</li>
+                        </ul>
+                    </div>
+                    <div class="phase-marker"></div>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-content fade-in">
+                        <h3 class="phase-title">Этап 3: Масштабирование (10-12 месяцев)</h3>
+                        <ul class="phase-items">
+                            <li>Полная интеграция всех информационных систем</li>
+                            <li>Запуск геймификации и реферальной программы</li>
+                            <li>Внедрение аналитики и системы сбора обратной связи</li>
+                            <li>Расширение функционала для территориальных организаций</li>
+                            <li>Создание API для интеграции с корпоративными системами</li>
+                        </ul>
+                    </div>
+                    <div class="phase-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telegram бот -->
+    <section class="telegram-bot">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Telegram-бот для членов профсоюза</h2>
+                <p class="section-subtitle">Быстрый доступ к информации и консультациям через популярный мессенджер</p>
+            </div>
+            <div class="bot-screenshots">
+                <div class="screenshot fade-in">
+                    <div class="screenshot-placeholder">
+                        <i class="fab fa-telegram" style="font-size: 3rem;"></i>
+                    </div>
+                    <p>Главное меню бота с быстрым доступом к основным функциям</p>
+                </div>
+                <div class="screenshot fade-in">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-comments" style="font-size: 3rem;"></i>
+                    </div>
+                    <p>Чат с юристом для консультаций по трудовым вопросам</p>
+                </div>
+                <div class="screenshot fade-in">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-calendar-alt" style="font-size: 3rem;"></i>
+                    </div>
+                    <p>Расписание мероприятий и возможность быстрой регистрации</p>
+                </div>
+                <div class="screenshot fade-in">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-bell" style="font-size: 3rem;"></i>
+                    </div>
+                    <p>Уведомления о важных событиях и голосованиях</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section id="join" class="cta">
+    <section class="cta">
         <div class="container">
             <h2>Присоединяйтесь к сообществу</h2>
             <p>Станьте частью профсоюза нового поколения, где ваша энергия превращается в реальные возможности и защищённость</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-accent">Подать заявку онлайн</a>
-                <a href="#" class="btn" style="background: white; color: var(--accent2);">Скачать приложение</a>
+                <a href="#" class="btn btn-primary" id="cta-join-btn">Подать заявку онлайн</a>
+                <a href="#" class="btn" style="background: white; color: var(--primary);">Скачать приложение</a>
             </div>
         </div>
     </section>
@@ -779,10 +1226,11 @@
                 <div class="footer-column">
                     <h3>Навигация</h3>
                     <ul class="footer-links">
+                        <li><a href="#goals">Цели</a></li>
                         <li><a href="#philosophy">Философия</a></li>
-                        <li><a href="#ecosystem">Экосистема</a></li>
-                        <li><a href="#kpi">Результаты</a></li>
-                        <li><a href="#join">Присоединиться</a></li>
+                        <li><a href="#kpi">Показатели</a></li>
+                        <li><a href="#unified-space">Пространство</a></li>
+                        <li><a href="#roadmap">Дорожная карта</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -800,7 +1248,80 @@
         </div>
     </footer>
 
+    <!-- Модальное окно для присоединения -->
+    <div class="modal" id="join-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h2 class="modal-title">Личный кабинет члена профсоюза</h2>
+            
+            <div class="user-profile">
+                <div class="user-avatar">ИИ</div>
+                <div class="user-info">
+                    <h3>Иван Иванов</h3>
+                    <p>Член профсоюза с 2023 года</p>
+                </div>
+            </div>
+            
+            <div class="subscription-options">
+                <h4>Подпишитесь на новостные каналы:</h4>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="territorial" checked>
+                    <label for="territorial">Территориальная профсоюзная организация</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="primary" checked>
+                    <label for="primary">Первичная профсоюзная организация</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="youth">
+                    <label for="youth">Молодежный совет</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="events">
+                    <label for="events">Уведомления о мероприятиях</label>
+                </div>
+            </div>
+            
+            <div style="margin-top: 25px;">
+                <h4>Ближайшие мероприятия:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Встреча молодежного актива - 15 ноября</li>
+                    <li>Семинар по трудовому праву - 20 ноября</li>
+                    <li>Экскурсия на энергообъект - 25 ноября</li>
+                </ul>
+            </div>
+            
+            <button class="btn btn-primary" style="width: 100%; margin-top: 25px;">Сохранить настройки</button>
+        </div>
+    </div>
+
     <script>
+        // Модальное окно для присоединения
+        const joinBtn = document.getElementById('join-btn');
+        const ctaJoinBtn = document.getElementById('cta-join-btn');
+        const modal = document.getElementById('join-modal');
+        const modalClose = document.getElementById('modal-close');
+
+        joinBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        ctaJoinBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
         // Табы экосистемы
         document.querySelectorAll('.tab-btn').forEach(button => {
             button.addEventListener('click', () => {
@@ -852,8 +1373,33 @@
 
         // Мобильное меню
         document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('.nav-links').style.display = 
-                document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex';
+            const navLinks = document.querySelector('.nav-links');
+            const navActions = document.querySelector('.nav-actions');
+            
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+                navActions.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navActions.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+                
+                navActions.style.flexDirection = 'column';
+                navActions.style.position = 'absolute';
+                navActions.style.top = 'calc(100% + 150px)';
+                navActions.style.left = '0';
+                navActions.style.width = '100%';
+                navActions.style.background = 'white';
+                navActions.style.padding = '20px';
+                navActions.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+            }
         });
     </script>
 </body>
