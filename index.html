@@ -1054,6 +1054,51 @@
         }
 
         /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero .slogan {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .slogan {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .app-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .app-screenshots {
+                order: 2;
+            }
+            
+            .app-features {
+                order: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links, .nav-actions {
                 display: none;
@@ -1072,27 +1117,28 @@
                 display: block;
             }
 
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                word-wrap: break-word;
             }
 
             .hero .slogan {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .hero-actions {
                 flex-direction: column;
                 align-items: center;
             }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .kpi-value {
-                font-size: 2rem;
-            }
-
+            
             .hero-symbols {
                 position: relative;
                 right: auto;
@@ -1101,12 +1147,41 @@
                 flex-direction: row;
                 justify-content: center;
                 margin-top: 40px;
+                gap: 20px;
             }
 
             .symbol {
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
                 font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .kpi-value {
+                font-size: 2rem;
+            }
+            
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .regions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .space-features {
+                grid-template-columns: 1fr;
             }
 
             .roadmap-timeline::before {
@@ -1129,18 +1204,143 @@
             .social-subscriptions {
                 grid-template-columns: 1fr;
             }
-
-            .app-container {
+            
+            .app-screenshots {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .app-screen {
+                width: 180px;
+                height: 360px;
+                transform: none !important;
+                margin: 0 !important;
+            }
+            
+            .app-screen-content {
+                padding: 30px 15px;
+            }
+            
+            .app-feature-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .app-download-buttons {
+                justify-content: center;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .cta p {
+                font-size: 1.1rem;
+            }
+            
+            .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+        }
 
-            .app-screenshots {
-                order: 2;
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
             }
+            
+            .hero .slogan {
+                font-size: 1.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.85rem;
+            }
+            
+            .goal-card, .philosophy-card {
+                padding: 20px;
+            }
+            
+            .app-screen {
+                width: 160px;
+                height: 320px;
+            }
+            
+            .app-screen-content {
+                padding: 20px 10px;
+            }
+            
+            .app-feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .app-feature-text h4 {
+                font-size: 1.1rem;
+            }
+            
+            .download-btn {
+                padding: 10px 15px;
+            }
+            
+            .download-btn-text span:last-child {
+                font-size: 0.9rem;
+            }
+            
+            .cta {
+                padding: 80px 0;
+            }
+            
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta p {
+                font-size: 1rem;
+            }
+        }
 
-            .app-features {
-                order: 1;
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero .slogan {
+                font-size: 1.1rem;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .app-screen {
+                width: 140px;
+                height: 280px;
+            }
+            
+            .app-feature-item {
+                margin-bottom: 20px;
+            }
+            
+            .app-download-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -1738,7 +1938,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Всероссийский Электропрофсоюз. Концепция "СИЛА В КАЖДОМ". Автор: Трофименко Евгений Сергеевич. Все права защищены.</p>
+                <p>&copy; 2024 Всероссийский Электропрофсоюз. Концепция "СИЛА В КАЖДОМ". Автор: Трофименко Евгений Сергеевич. Все права защищены.</p>
             </div>
         </div>
     </footer>
